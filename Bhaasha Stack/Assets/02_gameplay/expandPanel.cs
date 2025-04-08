@@ -6,8 +6,8 @@ using TMPro;
 
 public class ExpandPanel : MonoBehaviour
 {
-    public Vector2 expandedSize = new Vector2(270, 745);
-    public Vector2 collapsedSize = new Vector2(100, 745);
+    public Vector2 expandedSize = new Vector2(200, 305);
+    public Vector2 collapsedSize = new Vector2(35, 305);
     public float animationDuration = 0.3f;
 
     private bool isExpanded = false;

@@ -45,7 +45,6 @@ public class GameManagerCard : MonoBehaviour
         ShuffleCards();
 
     }
-
     void Update()
     {
 
@@ -94,7 +93,6 @@ public class GameManagerCard : MonoBehaviour
         }
 
     }
-
     public void CardFlipped(Card flippedCard)
     {
         if (firstCard == null)
@@ -125,7 +123,6 @@ public class GameManagerCard : MonoBehaviour
             StartCoroutine(FlipBackCards());
         }
     }
-
     IEnumerator FlipBackCards()
     {
         yield return new WaitForSeconds(1f);
@@ -145,6 +142,6 @@ public class GameManagerCard : MonoBehaviour
     }
     void UpdateTimerText()
     {
-        timerText.text = "Time left: " + Mathf.Round(timer) + "s";
+        timerText.text = "Timer: " + Mathf.Round(timer) + "s";
     }
 }
