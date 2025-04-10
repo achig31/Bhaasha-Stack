@@ -62,37 +62,49 @@ public class GameManagerCard : MonoBehaviour
 
         }
     }
+
     void CreateCards()
     {
-        for (int i = 0;  i < cardFaces.Length / 2; i++)
+        int numPairs = cardFaces.Length / 2;
+
+        for (int i = 0; i < numPairs; i++)
         {
-            cardIDs.Add(i);
-            cardIDs.Add(i);
+            // Hindi card
+            Card cardA = Instantiate(cardPrefab, cardspanel);
+            cardA.gameManager = this;
+            cardA.cardID = i * 2;
+            cardA.matchID = i;
+            cards.Add(cardA);
+
+            // English card
+            Card cardB = Instantiate(cardPrefab, cardspanel);
+            cardB.gameManager = this;
+            cardB.cardID = i * 2 + 1;
+            cardB.matchID = i;
+            cards.Add(cardB);
         }
 
-        foreach (int id in cardIDs)
-        {
-            Card newCard = Instantiate(cardPrefab, cardspanel);
-            newCard.gameManager = this;
-            newCard.cardID = id;
-            cards.Add(newCard);
-        }
+        ShuffleCards(); 
     }
+
     void ShuffleCards()
     {
-        for (int i = 0; i < cardIDs.Count; i++)
-        {
-            int randomIndex = Random.Range(i, cardIDs.Count);
-            int temp = cardIDs[i];
-            cardIDs[i] = cardIDs[randomIndex];
-            cardIDs[randomIndex] = temp;
-        }
         for (int i = 0; i < cards.Count; i++)
         {
-            cards[i].cardID = cardIDs[i];
-        }
+            int randomIndex = Random.Range(i, cards.Count);
 
+            // Swap cards visually in the hierarchy by changing their sibling index
+            Transform temp = cards[i].transform;
+            cards[i].transform.SetSiblingIndex(cards[randomIndex].transform.GetSiblingIndex());
+            cards[randomIndex].transform.SetSiblingIndex(temp.GetSiblingIndex());
+
+            // Also swap in the list
+            var tempCard = cards[i];
+            cards[i] = cards[randomIndex];
+            cards[randomIndex] = tempCard;
+        }
     }
+
     public void CardFlipped(Card flippedCard)
     {
         if (firstCard == null)
@@ -108,7 +120,7 @@ public class GameManagerCard : MonoBehaviour
     }
     void CheckMatch()
     {
-        if (firstCard.cardID == secondCard.cardID)
+        if (firstCard.matchID == secondCard.matchID)
         {
             pairsMatched++;
             if (pairsMatched == totalPairs)
@@ -123,6 +135,7 @@ public class GameManagerCard : MonoBehaviour
             StartCoroutine(FlipBackCards());
         }
     }
+
     IEnumerator FlipBackCards()
     {
         yield return new WaitForSeconds(1f);

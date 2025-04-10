@@ -5,22 +5,18 @@ using UnityEngine.UI;
 
 public class Card : MonoBehaviour
 {
-    public int cardID;
-
+    public int cardID; // used to load sprite
+    public int matchID; // used for logic matching
     public GameManagerCard gameManager;
-
     private bool isFlipped;
-
     public Image cardImage;
 
     void Start()
     {
         isFlipped = false;
         cardImage.sprite = GameManagerCard.Instance.cardBack;
-
     }
 
-    //method to flip the card
     public void FlipCard()
     {
         if (!isFlipped && gameManager.firstCard != null || gameManager.secondCard == null)
@@ -31,7 +27,6 @@ public class Card : MonoBehaviour
         }
     }
 
-    //method to hide the card
     public void HideCard()
     {
         isFlipped = false;

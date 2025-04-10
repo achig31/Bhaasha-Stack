@@ -1254,18 +1254,18 @@ MonoBehaviour:
   cardPrefab: {fileID: 5915262651411656831, guid: 8912ce02d3278714e87e4f018a87fb13, type: 3}
   cardBack: {fileID: 21300000, guid: 4b2e0edfb7c654eac9cfef5f742bb884, type: 3}
   cardFaces:
-  - {fileID: -1291736401, guid: 8e93ca3533f804f37b0650016f149b9d, type: 3}
-  - {fileID: -1646347859, guid: 8e93ca3533f804f37b0650016f149b9d, type: 3}
-  - {fileID: -1742416589, guid: 8e93ca3533f804f37b0650016f149b9d, type: 3}
-  - {fileID: 21300000, guid: 926929c3dc915fd46ae34cef678e5f57, type: 3}
-  - {fileID: 21300000, guid: c6ead98ab809205498e8ff5b7705b544, type: 3}
-  - {fileID: 21300000, guid: 6324f59b636f55b4ab2b785e5ef26040, type: 3}
   - {fileID: -712338277, guid: 8e93ca3533f804f37b0650016f149b9d, type: 3}
+  - {fileID: -1291736401, guid: 8e93ca3533f804f37b0650016f149b9d, type: 3}
   - {fileID: 1297505270, guid: 8e93ca3533f804f37b0650016f149b9d, type: 3}
+  - {fileID: -1646347859, guid: 8e93ca3533f804f37b0650016f149b9d, type: 3}
   - {fileID: -463125105, guid: 8e93ca3533f804f37b0650016f149b9d, type: 3}
-  - {fileID: 21300000, guid: 926929c3dc915fd46ae34cef678e5f57, type: 3}
-  - {fileID: 21300000, guid: 926929c3dc915fd46ae34cef678e5f57, type: 3}
-  - {fileID: 21300000, guid: 926929c3dc915fd46ae34cef678e5f57, type: 3}
+  - {fileID: -1742416589, guid: 8e93ca3533f804f37b0650016f149b9d, type: 3}
+  - {fileID: 1904911830, guid: 34d1711c8629e4d9b9f4838d475ccb15, type: 3}
+  - {fileID: 172540739, guid: 34d1711c8629e4d9b9f4838d475ccb15, type: 3}
+  - {fileID: -391257599, guid: 34d1711c8629e4d9b9f4838d475ccb15, type: 3}
+  - {fileID: 879949539, guid: 34d1711c8629e4d9b9f4838d475ccb15, type: 3}
+  - {fileID: 32643581, guid: 34d1711c8629e4d9b9f4838d475ccb15, type: 3}
+  - {fileID: -625194443, guid: 34d1711c8629e4d9b9f4838d475ccb15, type: 3}
   firstCard: {fileID: 0}
   secondCard: {fileID: 0}
   cardspanel: {fileID: 70830351}

@@ -145,6 +145,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac45bb03914ae934a8fb82e5e1240be6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardID: 0
+  cardID: 1
   gameManager: {fileID: 0}
   cardImage: {fileID: 3187263523041842976}
