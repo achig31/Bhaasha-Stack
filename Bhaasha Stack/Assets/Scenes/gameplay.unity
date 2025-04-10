@@ -158,8 +158,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 20.7, y: 98}
-  m_SizeDelta: {x: 66.9065, y: 18.1227}
+  m_AnchoredPosition: {x: 38.742775, y: 98.25793}
+  m_SizeDelta: {x: 76.1921, y: 18.6385}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &63771316
 MonoBehaviour:
@@ -249,10 +249,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: exit game
+  m_text: Exit Game
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
+  m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -813,10 +813,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'timer: '
+  m_text: 'Timer:'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
+  m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1252,17 +1252,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardPrefab: {fileID: 5915262651411656831, guid: 8912ce02d3278714e87e4f018a87fb13, type: 3}
-  cardBack: {fileID: 0}
+  cardBack: {fileID: 21300000, guid: 4b2e0edfb7c654eac9cfef5f742bb884, type: 3}
   cardFaces:
-  - {fileID: 21300000, guid: c6ead98ab809205498e8ff5b7705b544, type: 3}
-  - {fileID: 21300000, guid: 6324f59b636f55b4ab2b785e5ef26040, type: 3}
-  - {fileID: 21300000, guid: 630f881ad15fd5b45b2ef28677fbf12c, type: 3}
+  - {fileID: -1291736401, guid: 8e93ca3533f804f37b0650016f149b9d, type: 3}
+  - {fileID: -1646347859, guid: 8e93ca3533f804f37b0650016f149b9d, type: 3}
+  - {fileID: -1742416589, guid: 8e93ca3533f804f37b0650016f149b9d, type: 3}
   - {fileID: 21300000, guid: 926929c3dc915fd46ae34cef678e5f57, type: 3}
   - {fileID: 21300000, guid: c6ead98ab809205498e8ff5b7705b544, type: 3}
   - {fileID: 21300000, guid: 6324f59b636f55b4ab2b785e5ef26040, type: 3}
-  - {fileID: 21300000, guid: 630f881ad15fd5b45b2ef28677fbf12c, type: 3}
-  - {fileID: 21300000, guid: 926929c3dc915fd46ae34cef678e5f57, type: 3}
-  - {fileID: 21300000, guid: 926929c3dc915fd46ae34cef678e5f57, type: 3}
+  - {fileID: -712338277, guid: 8e93ca3533f804f37b0650016f149b9d, type: 3}
+  - {fileID: 1297505270, guid: 8e93ca3533f804f37b0650016f149b9d, type: 3}
+  - {fileID: -463125105, guid: 8e93ca3533f804f37b0650016f149b9d, type: 3}
   - {fileID: 21300000, guid: 926929c3dc915fd46ae34cef678e5f57, type: 3}
   - {fileID: 21300000, guid: 926929c3dc915fd46ae34cef678e5f57, type: 3}
   - {fileID: 21300000, guid: 926929c3dc915fd46ae34cef678e5f57, type: 3}
@@ -1270,7 +1270,7 @@ MonoBehaviour:
   secondCard: {fileID: 0}
   cardspanel: {fileID: 70830351}
   timerText: {fileID: 1130572449}
-  maxTime: 60
+  maxTime: 80
 --- !u!4 &2104441410
 Transform:
   m_ObjectHideFlags: 0
