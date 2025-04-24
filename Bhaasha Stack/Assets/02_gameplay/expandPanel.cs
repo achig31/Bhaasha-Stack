@@ -1,8 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;  // If you're using regular Unity Text, otherwise use TMPro
 using System.Collections;
-using TMPro;
+using System.Collections.Generic;
 
 public class ExpandPanel : MonoBehaviour
 {
@@ -14,17 +13,22 @@ public class ExpandPanel : MonoBehaviour
     private RectTransform rectTransform;
     private Coroutine currentCoroutine;
 
-    // Reference to the Text component
-    public TMP_Text panelText;  // Use Text for Unity's standard UI Text or TMP_Text for TextMeshPro
+    // Support for multiple elements to toggle visibility
+    public List<GameObject> panelElementsToToggle;
 
     void Start()
     {
         rectTransform = GetComponent<RectTransform>();
         rectTransform.sizeDelta = collapsedSize; // Start collapsed
 
-        // Ensure text is hidden when the panel is collapsed initially
-        if (panelText != null)
-            panelText.gameObject.SetActive(false);
+        // Hide all elements initially
+        if (panelElementsToToggle != null)
+        {
+            foreach (var element in panelElementsToToggle)
+            {
+                if (element != null) element.SetActive(false);
+            }
+        }
     }
 
     public void TogglePanel(BaseEventData eventData)
@@ -40,7 +44,7 @@ public class ExpandPanel : MonoBehaviour
     private IEnumerator AnimatePanel(Vector2 targetSize)
     {
         Vector2 startSize = rectTransform.sizeDelta;
-        float elapsedTime = 0;
+        float elapsedTime = 0f;
 
         while (elapsedTime < animationDuration)
         {
@@ -49,12 +53,15 @@ public class ExpandPanel : MonoBehaviour
             yield return null;
         }
 
-        rectTransform.sizeDelta = targetSize; // Ensure it reaches exact size
+        rectTransform.sizeDelta = targetSize; // Final adjustment
 
-        // Show or hide the text based on the panel's state
-        if (panelText != null)
+        // Show or hide all elements based on panel state
+        if (panelElementsToToggle != null)
         {
-            panelText.gameObject.SetActive(isExpanded);
+            foreach (var element in panelElementsToToggle)
+            {
+                if (element != null) element.SetActive(isExpanded);
+            }
         }
     }
 }
