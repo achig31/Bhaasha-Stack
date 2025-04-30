@@ -8,6 +8,7 @@ public class ExpandPanel : MonoBehaviour
     public Vector2 expandedSize = new Vector2(200, 305);
     public Vector2 collapsedSize = new Vector2(35, 305);
     public float animationDuration = 0.3f;
+    public bool isInteractable = true;
 
     private bool isExpanded = false;
     private RectTransform rectTransform;
@@ -33,6 +34,8 @@ public class ExpandPanel : MonoBehaviour
 
     public void TogglePanel(BaseEventData eventData)
     {
+        if (!isInteractable) return;
+
         if (currentCoroutine != null)
         {
             StopCoroutine(currentCoroutine);

@@ -23,6 +23,7 @@ public class GameManagerCard : MonoBehaviour
 
     private bool isGameOver;
     private bool isLevelFinished;
+    public GameObject gameOverpanel;
 
     public float maxTime = 60f;
 
@@ -148,10 +149,25 @@ public class GameManagerCard : MonoBehaviour
     void GameOver()
     {
         isGameOver = true;
+        StartCoroutine(ShowGameOverpanelDelayed());
+
+        IEnumerator ShowGameOverpanelDelayed()
+        {
+            yield return new WaitForSeconds(1.25f);
+            cardspanel.gameObject.SetActive(false);
+            foreach (var expand in FindObjectsOfType<ExpandPanel>())
+            {
+                expand.isInteractable = false;
+            }
+            gameOverpanel.SetActive(true);
+        }
+
     }
     void LevelFinished()
     {
         isLevelFinished = true;
+        gameOverpanel.SetActive(true);
+        cardspanel.gameObject.SetActive(false);
     }
     void UpdateTimerText()
     {
