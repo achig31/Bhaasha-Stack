@@ -24,6 +24,7 @@ public class Card : MonoBehaviour
             isFlipped = true;
             cardImage.sprite = gameManager.cardFaces[cardID];
             gameManager.CardFlipped(this);
+
         }
     }
 

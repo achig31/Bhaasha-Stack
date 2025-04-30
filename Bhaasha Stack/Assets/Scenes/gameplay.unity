@@ -1206,6 +1206,7 @@ MonoBehaviour:
   expandedSize: {x: 200, y: 305}
   collapsedSize: {x: 35, y: 305}
   animationDuration: 0.3
+  isInteractable: 1
   panelElementsToToggle: []
 --- !u!114 &1286507176
 MonoBehaviour:
@@ -1339,6 +1340,7 @@ MonoBehaviour:
   expandedSize: {x: 200, y: 305}
   collapsedSize: {x: 35, y: 305}
   animationDuration: 0.3
+  isInteractable: 1
   panelElementsToToggle:
   - {fileID: 63771314}
   - {fileID: 1673716353}
@@ -2120,7 +2122,7 @@ MonoBehaviour:
   cardspanel: {fileID: 70830351}
   timerText: {fileID: 1130572449}
   gameOverpanel: {fileID: 225608863}
-  maxTime: 10
+  maxTime: 80
 --- !u!4 &2104441410
 Transform:
   m_ObjectHideFlags: 0
