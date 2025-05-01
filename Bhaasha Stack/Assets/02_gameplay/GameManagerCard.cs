@@ -26,6 +26,7 @@ public class GameManagerCard : MonoBehaviour
     public GameObject gameOverpanel;
 
     public ExpandPanel detailsPanel;
+    public matchesPanel matchesPanel;
 
     public float maxTime = 60f;
 
@@ -137,10 +138,7 @@ public class GameManagerCard : MonoBehaviour
                 detailsPanel.ExpandPanelExternally();
             }
 
-            if (pairsMatched == totalPairs)
-            {
-                LevelFinished();
-            }
+            StartCoroutine(HandleMatchedPair(firstCard, secondCard));
 
             firstCard = null;
             secondCard = null;
@@ -187,4 +185,39 @@ public class GameManagerCard : MonoBehaviour
     {
         timerText.text = "Timer: " + Mathf.Round(timer) + "s";
     }
+    private IEnumerator HandleMatchedPair(Card cardA, Card cardB)
+    {
+        // Wait for details panel to collapse
+        while (detailsPanel != null && detailsPanel.IsExpanded)
+        {
+            yield return null;
+        }
+
+        if (matchesPanel != null)
+        {
+            Transform slot = matchesPanel.GetNextSlot();
+            if (slot != null)
+            {
+                var animatorA = cardA.GetComponent<MatchedCardAnimator>();
+                var animatorB = cardB.GetComponent<MatchedCardAnimator>();
+
+                if (animatorA != null && animatorB != null)
+                {
+                    // Stack cardA on top of cardB with slight Y offset
+                    Vector3 offsetA = new Vector3(0f, 20f, 0f);
+                    Vector3 offsetB = new Vector3(0f, -20f, 0f);
+
+                    // Animate both cards into the slot
+                    yield return StartCoroutine(animatorA.AnimateToSlot(slot, offsetA));
+                    yield return StartCoroutine(animatorB.AnimateToSlot(slot, offsetB));
+                }
+            }
+        }
+
+        if (pairsMatched == totalPairs)
+        {
+            LevelFinished();
+        }
+    }
+
 }

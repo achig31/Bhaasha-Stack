@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3187263523041842976}
   - component: {fileID: 9026750236405616320}
   - component: {fileID: 5915262651411656831}
-  - component: {fileID: -9175436964375560191}
+  - component: {fileID: -6682274384240870459}
   m_Layer: 5
   m_Name: card prefab
   m_TagString: Untagged
@@ -150,7 +150,7 @@ MonoBehaviour:
   matchID: 0
   gameManager: {fileID: 0}
   cardImage: {fileID: 3187263523041842976}
---- !u!114 &-9175436964375560191
+--- !u!114 &-6682274384240870459
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -162,5 +162,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae5f345e2ffb6f24f835748f9be1d33f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationTime: 0.5
-  targetScale: {x: 0.5, y: 0.5, z: 1}
+  animationDuration: 0.5

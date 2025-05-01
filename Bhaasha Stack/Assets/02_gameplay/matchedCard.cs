@@ -3,28 +3,28 @@ using System.Collections;
 
 public class MatchedCardAnimator : MonoBehaviour
 {
-    public float animationTime = 0.5f;
-    public Vector3 targetScale = new Vector3(0.5f, 0.5f, 1f);
+    public float animationDuration = 0.5f;
 
-    public IEnumerator AnimateToMatchPanel(Transform targetParent, Vector3 targetPosition)
+    public IEnumerator AnimateToSlot(Transform slotTransform, Vector3 localOffset)
     {
         Vector3 startPos = transform.position;
+        Vector3 endPos = slotTransform.position + slotTransform.TransformVector(localOffset);
+
         Vector3 startScale = transform.localScale;
+        Vector3 endScale = new Vector3(0.5f, 0.5f, 1f); // Shrink a bit
 
-        float elapsed = 0f;
+        float t = 0f;
 
-        while (elapsed < animationTime)
+        while (t < animationDuration)
         {
-            transform.position = Vector3.Lerp(startPos, targetPosition, elapsed / animationTime);
-            transform.localScale = Vector3.Lerp(startScale, targetScale, elapsed / animationTime);
-            elapsed += Time.deltaTime;
+            transform.position = Vector3.Lerp(startPos, endPos, t / animationDuration);
+            transform.localScale = Vector3.Lerp(startScale, endScale, t / animationDuration);
+            t += Time.deltaTime;
             yield return null;
         }
 
-        transform.position = targetPosition;
-        transform.localScale = targetScale;
-
-        transform.SetParent(targetParent, true); // Optional: parent to match panel
+        transform.position = endPos;
+        transform.localScale = endScale;
+        transform.SetParent(slotTransform, true);
     }
 }
-
