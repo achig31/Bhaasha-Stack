@@ -117,8 +117,8 @@ public class GameManagerCard : MonoBehaviour
             secondCard = flippedCard;
             CheckMatch();
         }
-
     }
+
     void CheckMatch()
     {
         if (firstCard.matchID == secondCard.matchID)

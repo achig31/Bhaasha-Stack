@@ -925,7 +925,7 @@ GameObject:
   - component: {fileID: 910949409}
   - component: {fileID: 910949408}
   m_Layer: 5
-  m_Name: details panel
+  m_Name: time panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1135,9 +1135,8 @@ GameObject:
   - component: {fileID: 1286507177}
   - component: {fileID: 1286507176}
   - component: {fileID: 1286507175}
-  - component: {fileID: 1286507174}
   m_Layer: 5
-  m_Name: audio panel
+  m_Name: details panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1162,35 +1161,6 @@ RectTransform:
   m_AnchoredPosition: {x: 785, y: 23}
   m_SizeDelta: {x: 35, y: 305}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1286507174
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1286507172}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 1
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1286507175}
-          m_TargetAssemblyTypeName: ExpandPanel, Assembly-CSharp
-          m_MethodName: TogglePanel
-          m_Mode: 0
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!114 &1286507175
 MonoBehaviour:
   m_ObjectHideFlags: 0

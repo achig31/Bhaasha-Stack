@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,18 +18,84 @@ public class Card : MonoBehaviour
 
     public void FlipCard()
     {
-        if (!isFlipped && gameManager.firstCard != null || gameManager.secondCard == null)
+        if (!isFlipped && gameManager.firstCard != this && gameManager.secondCard == null)
         {
-            isFlipped = true;
-            cardImage.sprite = gameManager.cardFaces[cardID];
-            gameManager.CardFlipped(this);
-
+            StartCoroutine(FlipAnimation());
         }
+    }
+
+    IEnumerator FlipAnimation()
+    {
+        float duration = 0.15f;
+        float elapsed = 0f;
+
+        Vector3 originalScale = transform.localScale;
+        Vector3 scaleZero = new Vector3(0, originalScale.y, originalScale.z);
+
+        // Shrink to middle
+        while (elapsed < duration)
+        {
+            transform.localScale = Vector3.Lerp(originalScale, scaleZero, elapsed / duration);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        transform.localScale = scaleZero;
+
+        // Change sprite to front
+        isFlipped = true;
+        cardImage.sprite = gameManager.cardFaces[cardID];
+
+        // Expand back
+        elapsed = 0f;
+        while (elapsed < duration)
+        {
+            transform.localScale = Vector3.Lerp(scaleZero, originalScale, elapsed / duration);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        transform.localScale = originalScale;
+
+        gameManager.CardFlipped(this);
     }
 
     public void HideCard()
     {
+        StartCoroutine(FlipBackAnimation());
+    }
+
+    IEnumerator FlipBackAnimation()
+    {
+        float duration = 0.15f;
+        float elapsed = 0f;
+
+        Vector3 originalScale = transform.localScale;
+        Vector3 scaleZero = new Vector3(0, originalScale.y, originalScale.z);
+
+        // Shrink to middle
+        while (elapsed < duration)
+        {
+            transform.localScale = Vector3.Lerp(originalScale, scaleZero, elapsed / duration);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        transform.localScale = scaleZero;
+
+        // Change sprite to back
         isFlipped = false;
         cardImage.sprite = gameManager.cardBack;
+
+        // Expand back
+        elapsed = 0f;
+        while (elapsed < duration)
+        {
+            transform.localScale = Vector3.Lerp(scaleZero, originalScale, elapsed / duration);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        transform.localScale = originalScale;
     }
 }
