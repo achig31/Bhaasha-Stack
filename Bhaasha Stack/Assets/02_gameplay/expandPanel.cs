@@ -14,33 +14,48 @@ public class ExpandPanel : MonoBehaviour
     private RectTransform rectTransform;
     private Coroutine currentCoroutine;
 
-    // Support for multiple elements to toggle visibility
     public List<GameObject> panelElementsToToggle;
+    public GameObject closeButton;
+    public bool IsExpanded => isExpanded;
 
     void Start()
     {
         rectTransform = GetComponent<RectTransform>();
-        rectTransform.sizeDelta = collapsedSize; // Start collapsed
+        rectTransform.sizeDelta = collapsedSize;
 
-        // Hide all elements initially
-        if (panelElementsToToggle != null)
-        {
-            foreach (var element in panelElementsToToggle)
-            {
-                if (element != null) element.SetActive(false);
-            }
-        }
+        ToggleElements(false);
+        if (closeButton != null) closeButton.SetActive(false);
     }
 
+    // Called by EventTrigger for hover-based interaction (e.g., menu panel)
     public void TogglePanel(BaseEventData eventData)
     {
         if (!isInteractable) return;
+        TogglePanelInternal(!isExpanded);
+    }
 
-        if (currentCoroutine != null)
+    // Called by other scripts (e.g., GameManagerCard) to expand programmatically
+    public void ExpandPanelExternally()
+    {
+        if (!isExpanded)
         {
-            StopCoroutine(currentCoroutine);
+            TogglePanelInternal(true);
         }
-        isExpanded = !isExpanded;
+    }
+
+    // Called by button or script to collapse
+    public void CollapsePanelExternally()
+    {
+        if (isExpanded)
+        {
+            TogglePanelInternal(false);
+        }
+    }
+
+    private void TogglePanelInternal(bool expand)
+    {
+        if (currentCoroutine != null) StopCoroutine(currentCoroutine);
+        isExpanded = expand;
         currentCoroutine = StartCoroutine(AnimatePanel(isExpanded ? expandedSize : collapsedSize));
     }
 
@@ -56,14 +71,19 @@ public class ExpandPanel : MonoBehaviour
             yield return null;
         }
 
-        rectTransform.sizeDelta = targetSize; // Final adjustment
+        rectTransform.sizeDelta = targetSize;
 
-        // Show or hide all elements based on panel state
+        ToggleElements(isExpanded);
+        if (closeButton != null) closeButton.SetActive(isExpanded);
+    }
+
+    private void ToggleElements(bool show)
+    {
         if (panelElementsToToggle != null)
         {
             foreach (var element in panelElementsToToggle)
             {
-                if (element != null) element.SetActive(isExpanded);
+                if (element != null) element.SetActive(show);
             }
         }
     }

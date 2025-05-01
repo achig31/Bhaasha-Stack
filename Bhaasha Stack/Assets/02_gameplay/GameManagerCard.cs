@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
@@ -25,6 +25,8 @@ public class GameManagerCard : MonoBehaviour
     private bool isLevelFinished;
     public GameObject gameOverpanel;
 
+    public ExpandPanel detailsPanel;
+
     public float maxTime = 60f;
 
     public void Awake()
@@ -48,9 +50,14 @@ public class GameManagerCard : MonoBehaviour
     }
     void Update()
     {
-
         if (!isGameOver && !isLevelFinished)
         {
+            //Pause timer if details panel is open
+            if (detailsPanel != null && detailsPanel.IsExpanded)
+            {
+                return; // Skip timer update
+            }
+
             if (timer > 0)
             {
                 timer -= Time.deltaTime;
@@ -60,7 +67,6 @@ public class GameManagerCard : MonoBehaviour
             {
                 GameOver();
             }
-
         }
     }
 
@@ -124,10 +130,18 @@ public class GameManagerCard : MonoBehaviour
         if (firstCard.matchID == secondCard.matchID)
         {
             pairsMatched++;
+
+            // Expand details panel on successful match
+            if (detailsPanel != null)
+            {
+                detailsPanel.ExpandPanelExternally();
+            }
+
             if (pairsMatched == totalPairs)
             {
                 LevelFinished();
             }
+
             firstCard = null;
             secondCard = null;
         }
