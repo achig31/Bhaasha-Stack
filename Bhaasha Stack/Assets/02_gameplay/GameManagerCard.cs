@@ -30,6 +30,8 @@ public class GameManagerCard : MonoBehaviour
 
     public float maxTime = 60f;
 
+    public GameObject cardPlaceholderPrefab;
+
     public void Awake()
     {
         Instance = this;
@@ -187,11 +189,21 @@ public class GameManagerCard : MonoBehaviour
     }
     private IEnumerator HandleMatchedPair(Card cardA, Card cardB)
     {
+        GridLayoutGroup gridLayout = cardspanel.GetComponent<GridLayoutGroup>();
+        if (gridLayout != null)
+        {
+            gridLayout.enabled = false;
+        }
+
         // Wait for details panel to collapse
         while (detailsPanel != null && detailsPanel.IsExpanded)
         {
             yield return null;
         }
+
+        // Insert placeholders to maintain layout
+        InsertPlaceholder(cardA.transform);
+        InsertPlaceholder(cardB.transform);
 
         if (matchesPanel != null)
         {
@@ -214,9 +226,22 @@ public class GameManagerCard : MonoBehaviour
             }
         }
 
+        // Re-enable the GridLayoutGroup after the animations start
+        if (gridLayout != null)
+        {
+            gridLayout.enabled = true;
+        }
+
         if (pairsMatched == totalPairs)
         {
             LevelFinished();
+        }
+        void InsertPlaceholder(Transform cardTransform)
+
+        {
+            // Create placeholder
+            GameObject placeholder = Instantiate(cardPlaceholderPrefab, cardTransform.parent);
+            placeholder.transform.SetSiblingIndex(cardTransform.GetSiblingIndex());
         }
     }
 
