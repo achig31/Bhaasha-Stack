@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class ExpandPanel : MonoBehaviour
 {
@@ -18,6 +19,10 @@ public class ExpandPanel : MonoBehaviour
     public GameObject closeButton;
     public bool IsExpanded => isExpanded;
 
+    // New variables to show images
+    public Image matchImage; // Image to display in the details panel
+    public Sprite[] matchImages; // Array of sprites for the 6 pairs
+
     void Start()
     {
         rectTransform = GetComponent<RectTransform>();
@@ -25,30 +30,10 @@ public class ExpandPanel : MonoBehaviour
 
         ToggleElements(false);
         if (closeButton != null) closeButton.SetActive(false);
-    }
 
-    // Called by EventTrigger for hover-based interaction (e.g., menu panel)
-    public void TogglePanel(BaseEventData eventData)
-    {
-        if (!isInteractable) return;
-        TogglePanelInternal(!isExpanded);
-    }
-
-    // Called by other scripts (e.g., GameManagerCard) to expand programmatically
-    public void ExpandPanelExternally()
-    {
-        if (!isExpanded)
+        if (matchImage != null)
         {
-            TogglePanelInternal(true);
-        }
-    }
-
-    // Called by button or script to collapse
-    public void CollapsePanelExternally()
-    {
-        if (isExpanded)
-        {
-            TogglePanelInternal(false);
+            matchImage.gameObject.SetActive(false); // Hide image by default
         }
     }
 
@@ -59,6 +44,21 @@ public class ExpandPanel : MonoBehaviour
         currentCoroutine = StartCoroutine(AnimatePanel(isExpanded ? expandedSize : collapsedSize));
     }
 
+    public void ExpandPanelExternally()
+    {
+        if (!isExpanded)
+        {
+            TogglePanelInternal(true);
+        }
+    }
+
+    public void CollapsePanelExternally()
+    {
+        if (isExpanded)
+        {
+            TogglePanelInternal(false);
+        }
+    }
     private IEnumerator AnimatePanel(Vector2 targetSize)
     {
         Vector2 startSize = rectTransform.sizeDelta;
@@ -75,6 +75,12 @@ public class ExpandPanel : MonoBehaviour
 
         ToggleElements(isExpanded);
         if (closeButton != null) closeButton.SetActive(isExpanded);
+
+        // Show the image only after the panel has finished expanding
+        if (isExpanded && matchImage != null)
+        {
+            matchImage.gameObject.SetActive(true); // Show image after animation
+        }
     }
 
     private void ToggleElements(bool show)
@@ -85,6 +91,15 @@ public class ExpandPanel : MonoBehaviour
             {
                 if (element != null) element.SetActive(show);
             }
+        }
+    }
+
+    // Method to set the match image
+    public void ShowMatchImage(int matchIndex)
+    {
+        if (matchImage != null && matchImages != null && matchImages.Length > matchIndex)
+        {
+            matchImage.sprite = matchImages[matchIndex];
         }
     }
 }

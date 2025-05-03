@@ -94,7 +94,7 @@ public class GameManagerCard : MonoBehaviour
             cards.Add(cardB);
         }
 
-        ShuffleCards(); 
+        ShuffleCards();
     }
 
     void ShuffleCards()
@@ -138,6 +138,9 @@ public class GameManagerCard : MonoBehaviour
             if (detailsPanel != null)
             {
                 detailsPanel.ExpandPanelExternally();
+
+                // Show the image corresponding to the match
+                detailsPanel.ShowMatchImage(firstCard.matchID); // Use the matchID to fetch the image
             }
 
             StartCoroutine(HandleMatchedPair(firstCard, secondCard));
@@ -244,5 +247,5 @@ public class GameManagerCard : MonoBehaviour
             placeholder.transform.SetSiblingIndex(cardTransform.GetSiblingIndex());
         }
     }
-
 }
+
