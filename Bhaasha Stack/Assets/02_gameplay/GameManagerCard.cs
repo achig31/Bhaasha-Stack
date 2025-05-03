@@ -183,7 +183,7 @@ public class GameManagerCard : MonoBehaviour
     }
     void UpdateTimerText()
     {
-        timerText.text = "Timer: " + Mathf.Round(timer) + "s";
+        timerText.text = "TIME: " + Mathf.Round(timer) + "s";
     }
     private IEnumerator HandleMatchedPair(Card cardA, Card cardB)
     {
