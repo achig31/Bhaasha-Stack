@@ -11,7 +11,7 @@ public class GameManagerCard : MonoBehaviour
     public Sprite cardBack;
     public Sprite[] cardFaces;
 
-    private List<Card> cards;
+private List<Card> cards;
     private List<int> cardIDs;
     public Card firstCard, secondCard;
     public Transform cardspanel;
@@ -24,6 +24,7 @@ public class GameManagerCard : MonoBehaviour
     private bool isGameOver;
     private bool isLevelFinished;
     public GameObject gameOverpanel;
+    public GameObject youWinPanel;
 
     public ExpandPanel detailsPanel;
     public matchesPanel matchesPanel;
@@ -66,7 +67,7 @@ public class GameManagerCard : MonoBehaviour
                 timer -= Time.deltaTime;
                 UpdateTimerText();
             }
-            else
+            else if (!isLevelFinished)
             {
                 GameOver();
             }
@@ -140,7 +141,7 @@ public class GameManagerCard : MonoBehaviour
                 detailsPanel.ExpandPanelExternally();
 
                 // Showing the image corresponding to the match + using the matchID to fetch the image
-                detailsPanel.ShowMatchImage(firstCard.matchID); 
+                detailsPanel.ShowMatchImage(firstCard.matchID);
             }
 
             StartCoroutine(HandleMatchedPair(firstCard, secondCard));
@@ -183,9 +184,10 @@ public class GameManagerCard : MonoBehaviour
     void LevelFinished()
     {
         isLevelFinished = true;
-        gameOverpanel.SetActive(true);
+        youWinPanel.SetActive(true);
         cardspanel.gameObject.SetActive(false);
     }
+
     void UpdateTimerText()
     {
         timerText.text = "TIME: " + Mathf.Round(timer) + "s";
@@ -247,5 +249,6 @@ public class GameManagerCard : MonoBehaviour
             placeholder.transform.SetSiblingIndex(cardTransform.GetSiblingIndex());
         }
     }
-}
 
+
+}
