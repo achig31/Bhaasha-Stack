@@ -11,7 +11,7 @@ public class MatchedCardAnimator : MonoBehaviour
         Vector3 endPos = slotTransform.position + slotTransform.TransformVector(localOffset);
 
         Vector3 startScale = transform.localScale;
-        Vector3 endScale = new Vector3(0.5f, 0.5f, 1f); // Shrink a bit
+        Vector3 endScale = new Vector3(0.5f, 0.5f, 1f); 
 
         float t = 0f;
 

@@ -55,10 +55,10 @@ public class GameManagerCard : MonoBehaviour
     {
         if (!isGameOver && !isLevelFinished)
         {
-            //Pause timer if details panel is open
+            //Pause timer when details panel is open
             if (detailsPanel != null && detailsPanel.IsExpanded)
             {
-                return; // Skip timer update
+                return;
             }
 
             if (timer > 0)
@@ -79,14 +79,14 @@ public class GameManagerCard : MonoBehaviour
 
         for (int i = 0; i < numPairs; i++)
         {
-            // Hindi card
+            // Hindi cards
             Card cardA = Instantiate(cardPrefab, cardspanel);
             cardA.gameManager = this;
             cardA.cardID = i * 2;
             cardA.matchID = i;
             cards.Add(cardA);
 
-            // English card
+            // English cards
             Card cardB = Instantiate(cardPrefab, cardspanel);
             cardB.gameManager = this;
             cardB.cardID = i * 2 + 1;
@@ -103,12 +103,12 @@ public class GameManagerCard : MonoBehaviour
         {
             int randomIndex = Random.Range(i, cards.Count);
 
-            // Swap cards visually in the hierarchy by changing their sibling index
+            // Swapping cards visually in the hierarchy
             Transform temp = cards[i].transform;
             cards[i].transform.SetSiblingIndex(cards[randomIndex].transform.GetSiblingIndex());
             cards[randomIndex].transform.SetSiblingIndex(temp.GetSiblingIndex());
 
-            // Also swap in the list
+            // Swapping in the list
             var tempCard = cards[i];
             cards[i] = cards[randomIndex];
             cards[randomIndex] = tempCard;
@@ -134,13 +134,13 @@ public class GameManagerCard : MonoBehaviour
         {
             pairsMatched++;
 
-            // Expand details panel on successful match
+            // Expanding details panel on successful match
             if (detailsPanel != null)
             {
                 detailsPanel.ExpandPanelExternally();
 
-                // Show the image corresponding to the match
-                detailsPanel.ShowMatchImage(firstCard.matchID); // Use the matchID to fetch the image
+                // Showing the image corresponding to the match + using the matchID to fetch the image
+                detailsPanel.ShowMatchImage(firstCard.matchID); 
             }
 
             StartCoroutine(HandleMatchedPair(firstCard, secondCard));
@@ -198,13 +198,13 @@ public class GameManagerCard : MonoBehaviour
             gridLayout.enabled = false;
         }
 
-        // Wait for details panel to collapse
+        // Waiting for details panel to collapse
         while (detailsPanel != null && detailsPanel.IsExpanded)
         {
             yield return null;
         }
 
-        // Insert placeholders to maintain layout
+        // Inserting placeholders to maintain layout
         InsertPlaceholder(cardA.transform);
         InsertPlaceholder(cardB.transform);
 
@@ -218,18 +218,18 @@ public class GameManagerCard : MonoBehaviour
 
                 if (animatorA != null && animatorB != null)
                 {
-                    // Stack cardA on top of cardB with slight Y offset
+                    // Stacking cardA on top of cardB with slight Y offset
                     Vector3 offsetA = new Vector3(0f, 20f, 0f);
                     Vector3 offsetB = new Vector3(0f, -20f, 0f);
 
-                    // Animate both cards into the slot
+                    // Animating both cards into the slot
                     yield return StartCoroutine(animatorA.AnimateToSlot(slot, offsetA));
                     yield return StartCoroutine(animatorB.AnimateToSlot(slot, offsetB));
                 }
             }
         }
 
-        // Re-enable the GridLayoutGroup after the animations start
+        // Re-enabling the grid layout group after the animations
         if (gridLayout != null)
         {
             gridLayout.enabled = true;
@@ -242,7 +242,7 @@ public class GameManagerCard : MonoBehaviour
         void InsertPlaceholder(Transform cardTransform)
 
         {
-            // Create placeholder
+            // Creating placeholders
             GameObject placeholder = Instantiate(cardPlaceholderPrefab, cardTransform.parent);
             placeholder.transform.SetSiblingIndex(cardTransform.GetSiblingIndex());
         }

@@ -19,9 +19,8 @@ public class ExpandPanel : MonoBehaviour
     public GameObject closeButton;
     public bool IsExpanded => isExpanded;
 
-    // New variables to show images
-    public Image matchImage; // Image to display in the details panel
-    public Sprite[] matchImages; // Array of sprites for the 6 pairs
+    public Image matchImage; 
+    public Sprite[] matchImages; 
 
     void Start()
     {
@@ -33,8 +32,14 @@ public class ExpandPanel : MonoBehaviour
 
         if (matchImage != null)
         {
-            matchImage.gameObject.SetActive(false); // Hide image by default
+            matchImage.gameObject.SetActive(false); 
         }
+    }
+
+    public void TogglePanel(BaseEventData eventData)
+    {
+        if (!isInteractable) return;
+        TogglePanelInternal(!isExpanded);
     }
 
     private void TogglePanelInternal(bool expand)
@@ -64,7 +69,6 @@ public class ExpandPanel : MonoBehaviour
         Vector2 startSize = rectTransform.sizeDelta;
         float elapsedTime = 0f;
 
-        // If collapsing, hide elements immediately except the image
         if (!isExpanded)
         {
             ToggleElements(false);
@@ -84,11 +88,11 @@ public class ExpandPanel : MonoBehaviour
         {
             ToggleElements(true);
             if (closeButton != null) closeButton.SetActive(true);
-            if (matchImage != null) matchImage.gameObject.SetActive(true); // show image after expanding
+            if (matchImage != null) matchImage.gameObject.SetActive(true); 
         }
         else
         {
-            if (matchImage != null) matchImage.gameObject.SetActive(false); // hide image after collapsing
+            if (matchImage != null) matchImage.gameObject.SetActive(false);
         }
     }
 

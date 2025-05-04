@@ -24,6 +24,7 @@ public class Card : MonoBehaviour
         }
     }
 
+    //Flipping the card
     IEnumerator FlipAnimation()
     {
         float duration = 0.15f;
@@ -42,11 +43,11 @@ public class Card : MonoBehaviour
 
         transform.localScale = scaleZero;
 
-        // Change sprite to front
+        // Changing sprite to front
         isFlipped = true;
         cardImage.sprite = gameManager.cardFaces[cardID];
 
-        // Expand back
+        // Expanding it back
         elapsed = 0f;
         while (elapsed < duration)
         {
@@ -73,7 +74,7 @@ public class Card : MonoBehaviour
         Vector3 originalScale = transform.localScale;
         Vector3 scaleZero = new Vector3(0, originalScale.y, originalScale.z);
 
-        // Shrink to middle
+        // Shrinking to middle
         while (elapsed < duration)
         {
             transform.localScale = Vector3.Lerp(originalScale, scaleZero, elapsed / duration);
@@ -83,11 +84,11 @@ public class Card : MonoBehaviour
 
         transform.localScale = scaleZero;
 
-        // Change sprite to back
+        // Changing sprite to back
         isFlipped = false;
         cardImage.sprite = gameManager.cardBack;
 
-        // Expand back
+        // Expanding back
         elapsed = 0f;
         while (elapsed < duration)
         {

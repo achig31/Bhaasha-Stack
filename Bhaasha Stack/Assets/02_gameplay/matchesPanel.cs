@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class matchesPanel : MonoBehaviour
 {
-    public Transform[] matchSlots; // Assign 6 empty slot Transforms in Inspector
+    public Transform[] matchSlots;
     private int currentSlotIndex = 0;
 
     public Transform GetNextSlot()
