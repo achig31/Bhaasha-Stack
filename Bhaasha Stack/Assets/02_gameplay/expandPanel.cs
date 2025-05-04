@@ -64,6 +64,13 @@ public class ExpandPanel : MonoBehaviour
         Vector2 startSize = rectTransform.sizeDelta;
         float elapsedTime = 0f;
 
+        // If collapsing, hide elements immediately except the image
+        if (!isExpanded)
+        {
+            ToggleElements(false);
+            if (closeButton != null) closeButton.SetActive(false);
+        }
+
         while (elapsedTime < animationDuration)
         {
             rectTransform.sizeDelta = Vector2.Lerp(startSize, targetSize, elapsedTime / animationDuration);
@@ -73,13 +80,15 @@ public class ExpandPanel : MonoBehaviour
 
         rectTransform.sizeDelta = targetSize;
 
-        ToggleElements(isExpanded);
-        if (closeButton != null) closeButton.SetActive(isExpanded);
-
-        // Show the image only after the panel has finished expanding
-        if (isExpanded && matchImage != null)
+        if (isExpanded)
         {
-            matchImage.gameObject.SetActive(true); // Show image after animation
+            ToggleElements(true);
+            if (closeButton != null) closeButton.SetActive(true);
+            if (matchImage != null) matchImage.gameObject.SetActive(true); // show image after expanding
+        }
+        else
+        {
+            if (matchImage != null) matchImage.gameObject.SetActive(false); // hide image after collapsing
         }
     }
 

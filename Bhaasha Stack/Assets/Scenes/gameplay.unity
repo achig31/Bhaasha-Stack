@@ -1649,7 +1649,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -4.7491, y: 199.89}
+  m_AnchoredPosition: {x: 0.0000076293945, y: 200.49997}
   m_SizeDelta: {x: 127, y: 49}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &910949408
@@ -1736,7 +1736,6 @@ GameObject:
   - component: {fileID: 1124529709}
   - component: {fileID: 1124529711}
   - component: {fileID: 1124529710}
-  - component: {fileID: 1124529712}
   m_Layer: 5
   m_Name: matchImage
   m_TagString: Untagged
@@ -1761,7 +1760,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -64.7, y: -0.000016212}
-  m_SizeDelta: {x: 159.5, y: 305}
+  m_SizeDelta: {x: 160, y: 305}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1124529710
 MonoBehaviour:
@@ -1801,19 +1800,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1124529708}
   m_CullTransparentMesh: 1
---- !u!114 &1124529712
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1124529708}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8558c99e7f166144aa76fcbf21a71b7e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  imageToDisable: {fileID: 1124529710}
 --- !u!1 &1130572448
 GameObject:
   m_ObjectHideFlags: 0
@@ -2021,7 +2007,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: -18.5056, y: 39}
-  m_SizeDelta: {x: 290, y: 305}
+  m_SizeDelta: {x: 35, y: 305}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1286507175
 MonoBehaviour:
@@ -3048,18 +3034,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1124529712}
-        m_TargetAssemblyTypeName: disableImage, Assembly-CSharp
-        m_MethodName: DisableImageOnClick
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1921211321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3264,18 +3238,18 @@ MonoBehaviour:
   cardPrefab: {fileID: 5915262651411656831, guid: 8912ce02d3278714e87e4f018a87fb13, type: 3}
   cardBack: {fileID: 21300000, guid: 4513dc161c1774c08aafa8987cb2b34b, type: 3}
   cardFaces:
-  - {fileID: -712338277, guid: 8e93ca3533f804f37b0650016f149b9d, type: 3}
-  - {fileID: -1291736401, guid: 8e93ca3533f804f37b0650016f149b9d, type: 3}
-  - {fileID: 1297505270, guid: 8e93ca3533f804f37b0650016f149b9d, type: 3}
-  - {fileID: -1646347859, guid: 8e93ca3533f804f37b0650016f149b9d, type: 3}
-  - {fileID: -463125105, guid: 8e93ca3533f804f37b0650016f149b9d, type: 3}
-  - {fileID: -1742416589, guid: 8e93ca3533f804f37b0650016f149b9d, type: 3}
-  - {fileID: 1904911830, guid: 34d1711c8629e4d9b9f4838d475ccb15, type: 3}
-  - {fileID: 172540739, guid: 34d1711c8629e4d9b9f4838d475ccb15, type: 3}
-  - {fileID: -391257599, guid: 34d1711c8629e4d9b9f4838d475ccb15, type: 3}
-  - {fileID: 879949539, guid: 34d1711c8629e4d9b9f4838d475ccb15, type: 3}
-  - {fileID: 32643581, guid: 34d1711c8629e4d9b9f4838d475ccb15, type: 3}
-  - {fileID: -625194443, guid: 34d1711c8629e4d9b9f4838d475ccb15, type: 3}
+  - {fileID: -1912092942, guid: 2c6c2717add0447a196aa331492942f0, type: 3}
+  - {fileID: 656453670, guid: 2c6c2717add0447a196aa331492942f0, type: 3}
+  - {fileID: 461621673, guid: 2c6c2717add0447a196aa331492942f0, type: 3}
+  - {fileID: -1284143724, guid: 2c6c2717add0447a196aa331492942f0, type: 3}
+  - {fileID: 1663469437, guid: 2c6c2717add0447a196aa331492942f0, type: 3}
+  - {fileID: -2087260130, guid: 2c6c2717add0447a196aa331492942f0, type: 3}
+  - {fileID: 774487658, guid: 34dd11512a4ff4b7fbcb841f0271011c, type: 3}
+  - {fileID: -463333931, guid: 34dd11512a4ff4b7fbcb841f0271011c, type: 3}
+  - {fileID: -932053465, guid: 34dd11512a4ff4b7fbcb841f0271011c, type: 3}
+  - {fileID: -378523262, guid: 34dd11512a4ff4b7fbcb841f0271011c, type: 3}
+  - {fileID: -390791178, guid: 34dd11512a4ff4b7fbcb841f0271011c, type: 3}
+  - {fileID: 1741186341, guid: 34dd11512a4ff4b7fbcb841f0271011c, type: 3}
   firstCard: {fileID: 0}
   secondCard: {fileID: 0}
   cardspanel: {fileID: 70830351}
